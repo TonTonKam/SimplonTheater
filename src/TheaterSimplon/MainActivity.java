@@ -29,6 +29,10 @@ public class MainActivity {
 	 * 
 	 * idee graphique "tab[i]" | [ "O" ] puis "tab[i]" | [ "X" ]
 	 */
+	
+	static Scanner scan = new Scanner(System.in);
+	static boolean isContinue = true;
+	
 	public static void main(String[] args) {
 
 		//présentation graphique basic
@@ -36,14 +40,12 @@ public class MainActivity {
 		//variable pour naviguer dans le tableau
 		int i, j;
 		
-		Scanner scan = new Scanner(System.in);
-		
 		String varLibre = "O";
 		String varChoisi = "X";
 		int rangMax = 8;
 		int placeMax = 9;
 		
-		boolean isContinue = true;
+
 
 		System.out.println("Nombre de places dans le cinema");
 		tableau = new int[rangMax][placeMax];
@@ -115,46 +117,34 @@ public class MainActivity {
 					System.out.println();
 						
 // sortir de la boucle
-					System.out.println("Voulez vous continuer? (pressez o ou O pour continuer)");
-					String vrai1 = "o";
-					String vrai2 = "O";
-					String validation = scan.next();
-					if(validation.equals(vrai1)||validation.equals(vrai2)) {
-						isContinue = true;
-					}else {
-						isContinue = false;
-					}
+					retry();
 					
 				}else {
 					System.out.println("Il n'y a pas assez de places (recommencez votre choix).");
-					System.out.println("Voulez vous continuer? (pressez o ou O pour continuer)");
-					String vrai1 = "o";
-					String vrai2 = "O";
-					String validation = scan.next();
-					if(validation.equals(vrai1)||validation.equals(vrai2)) {
-						isContinue = true;
-					}else {
-						isContinue = false;
-					}
+					retry();
 				}
 					
 			} else {
 				// il faut relancer le programme
 				System.out.println("Vous n'avez pas choisi la bonne rangée (recommencez votre choix).");
-				System.out.println("Voulez vous continuer? (pressez o ou O pour continuer)");
-				String vrai1 = "o";
-				String vrai2 = "O";
-				String validation = scan.next();
-				if(validation.equals(vrai1)||validation.equals(vrai2)) {
-					isContinue = true;
-				}else {
-					isContinue = false;
-				}
+				retry();
 			}
 	
 		} //fin boucle
 		
 	} //fin static
+	
+	static void retry() {
+		System.out.println("Voulez vous continuer? (pressez o ou O pour continuer)");
+		String vrai1 = "o";
+		String vrai2 = "O";
+		String validation = scan.next();
+		if(validation.equals(vrai1)||validation.equals(vrai2)) {
+			isContinue = true;
+		}else {
+			isContinue = false;
+		}
+	}
 } // fin classe
 
 
